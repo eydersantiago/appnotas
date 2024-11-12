@@ -4,8 +4,8 @@ import { checkingCredentials, logout, login } from "./";
 import { signInWithGoogle } from "../../firebase/providers";
 import axios from "axios";
 
-const AUTH_API_URL = "http://localhost:30377/auth";
-const USER_API_URL = "http://localhost:31596/user";
+const AUTH_API_URL = "http://localhost:30673/auth";
+const USER_API_URL = "http://localhost:31707/user";
 
 export const checkingAuthentication = () => {
   return (dispatch) => {
