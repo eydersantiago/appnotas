@@ -1,0 +1,2 @@
+# Ignorar node_modules y .env en todas las subcarpetas
+**/node_modules/
