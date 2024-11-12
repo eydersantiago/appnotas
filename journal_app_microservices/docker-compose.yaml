@@ -30,3 +30,17 @@ services:
     environment:
       NODE_ENV: production
       PORT: 4001
+
+  orquestador:
+    build:
+      context: ./orquestador
+      dockerfile: Dockerfile
+    ports:
+      - "4005:4005"
+    environment:
+      NODE_ENV: production
+      PORT: 4005
+    depends_on:
+      - auth
+      - journal
+      - user
