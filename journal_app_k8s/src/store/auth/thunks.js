@@ -4,8 +4,10 @@ import { checkingCredentials, logout, login } from "./";
 import { signInWithGoogle } from "../../firebase/providers";
 import axios from "axios";
 
-const AUTH_API_URL = "http://localhost:30377/auth";
-const USER_API_URL = "http://localhost:31596/user";
+const AUTH_API_URL = "http://localhost:4000/auth";
+const USER_API_URL = "http://localhost:4001/user";
+
+const ORCHESTRATOR_API_URL = "http://localhost:4005";
 
 export const checkingAuthentication = () => {
   return (dispatch) => {
@@ -58,7 +60,8 @@ export const startLoginWithUserWithEmailPassword = ({ email, password }) => {
     dispatch(checkingCredentials());
 
     try {
-      const response = await axios.post(`${AUTH_API_URL}/login`, {
+      const response = await axios.post(`${ORCHESTRATOR_API_URL}/auth/login`, {
+      //const response = await axios.post(`${AUTH_API_URL}/login`, {
         email,
         password,
       });
