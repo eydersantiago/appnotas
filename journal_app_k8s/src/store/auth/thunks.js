@@ -4,7 +4,7 @@ import { checkingCredentials, logout, login } from "./";
 import { signInWithGoogle } from "../../firebase/providers";
 import axios from "axios";
 
-const AUTH_API_URL = "http://localhost:4000/auth";
+const AUTH_API_URL = "http://localhost:30673/auth";
 const USER_API_URL = "http://localhost:4001/user";
 
 const ORCHESTRATOR_API_URL = "http://localhost:4005";

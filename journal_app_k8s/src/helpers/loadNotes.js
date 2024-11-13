@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const JOURNAL_API_URL = "http://localhost:4002/journal";
+const JOURNAL_API_URL = "http://localhost:4005/journal";
 
 export const loadNotes = async (uid = '') => {
 
