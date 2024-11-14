@@ -6,6 +6,16 @@ const login = async (credentials) => {
   return data;
 };
 
-module.exports = { login };
+const checkAuthState = async () => {
+  const { data } = await axios.post(`${AUTH_API_URL}/check-auth-state`);
+  return data;
+};
 
+// Servicio para cerrar sesión
+const logout = async () => {
+  const { data } = await axios.post(`${AUTH_API_URL}/logout`);
+  return data;
+};
+
+module.exports = { login, checkAuthState, logout };
 

@@ -10,4 +10,26 @@ const loginController = async (req, res, next) => {
   }
 };
 
-module.exports = { login: loginController };
+const checkAuthStateController = async (req, res, next) => {
+  try {
+    const response = await checkAuthState();
+    res.status(200).json(response);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const logoutController = async (req, res, next) => {
+  try {
+    const response = await logout();
+    res.status(200).json(response);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { 
+  login: loginController, 
+  checkAuthState: checkAuthStateController, 
+  logout: logoutController 
+};

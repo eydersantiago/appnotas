@@ -11,7 +11,7 @@ import {
 const router = express.Router();
 
 router.post('/login', authenticateUserWithEmailPassword );
-router.post('/register', creatingUserWithEmailPassword);
+// router.post('/register', creatingUserWithEmailPassword);
 router.post('/check-auth-state', getAuthenticatedUser);
 router.post('/logout', logout);
 
