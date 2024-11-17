@@ -81,13 +81,15 @@ export const startLoginWithUserWithEmailPassword = ({ email, password }) => {
 export const startLogout = () => {
   return async (dispatch) => {
     try {
-      await axios.post(`${AUTH_API_URL}/logout`);
+      await axios.post(`${ORCHESTRATOR_API_URL}/auth/logout`); // Apunta al orquestador
       dispatch(clearNotesLogout());
       dispatch(logout());
     } catch (error) {
+      console.error("Error al cerrar sesión:", error);
     }
   };
 };
+
 
 export const checkAuthStateChanged = () => {
   return async (dispatch) => {

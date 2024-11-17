@@ -1,0 +1,18 @@
+.user-profile-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
