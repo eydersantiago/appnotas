@@ -2,22 +2,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import {
   logoutFirebase,
   loginWithEmailPassword,
-  registerUserWithEmailPassword,
 } from "./firebase/providers.js";
 import { firebaseAuth } from "./firebase/config.js";
-
-export const creatingUserWithEmailPassword = async (req, res) => {
-
-  const { email, password, displayName } = req.body;
-
-  try {
-    const { ok, uid, photoURL, errorMessage } =
-      await registerUserWithEmailPassword({ displayName, email, password });
-    res.status(200).json({ ok, displayName, photoURL, uid, errorMessage });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
 
 export const authenticateUserWithEmailPassword = async (req, res) => {
   const { email, password } = req.body;
@@ -53,4 +39,12 @@ export const getAuthenticatedUser = async (req, res) => {
   } catch (error) {
     res.status(401).json({ error: "El usuario no se ha autenticado" });
   }
+};
+
+export const creatingUserGoogle = async (req, res) => {
+
+  res.status(200).json({
+    ok: false
+  });
+
 };
