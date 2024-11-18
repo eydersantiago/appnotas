@@ -10,4 +10,11 @@ const userController = async (req, res, next) => {
   }
 };
 
-module.exports = { user: userController };
+const startGoogleSignIt = async (req, res) => {
+  res.status(200).json({
+    ok: false
+  });
+
+};
+
+module.exports = { user: userController, startGoogleSignIt };
