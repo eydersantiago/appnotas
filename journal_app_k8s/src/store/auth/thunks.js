@@ -20,10 +20,8 @@ export const startGoogleSignIt = () => {
 
       dispatch(checkingCredentials());
 
-      const result = await signInWithGoogle();
-      console.log(result.errorMessage)
-
-      if (!result.ok) return dispatch(logout(result.errorMessage));
+      const response = await axios.post(`${USER_API_URL}/google-signin`)
+      if (!response.data.ok) return window.location.href = "http://localhost:8080/500.html";
 
       dispatch(login(result));
   }
