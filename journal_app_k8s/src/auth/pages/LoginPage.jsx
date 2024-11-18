@@ -82,7 +82,7 @@ export const LoginPage = () => {
               </Alert>
             </Grid>
 
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={6}>
               <Button
                 type='submit'
                 variant='contained'
@@ -90,7 +90,7 @@ export const LoginPage = () => {
                 disabled={isAuthenticating}
               >Login</Button>
             </Grid>
-            {/* <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6}>
               <Button
                 onClick={onGoogleSignIn}
                 variant='contained'
@@ -101,7 +101,7 @@ export const LoginPage = () => {
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
               </Button>
-            </Grid> */}
+            </Grid>
           </Grid>
 
           <Grid

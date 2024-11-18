@@ -4,14 +4,10 @@ import {
 } from "./firebase/providers.js";
 
 export const startGoogleSignIt = async (req, res) => {
-  console.log("estoy en signInWithGoogle");
+  res.status(200).json({
+    ok: false
+  });
 
-  try {
-    const result = await signInWithGoogle();
-    res.status(200).json(result);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
 };
 
 export const creatingUserWithEmailPassword = async (req, res) => {
