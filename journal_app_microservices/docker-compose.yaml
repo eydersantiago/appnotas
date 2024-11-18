@@ -44,3 +44,11 @@ services:
       - auth
       - journal
       - user
+  
+  error-pages:
+    image: tarampampam/error-pages
+    environment:
+      TEMPLATE_NAME: "lost-in-space"
+      SHOW_DETAILS: true
+    ports:
+      - "8080:8080"
