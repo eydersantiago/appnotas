@@ -1,4 +1,4 @@
-const { login } = require('../services/authService'); // Importa la función correcta
+const { login, checkAuthState, logout } = require('../services/authService'); // Importa la función correcta
 
 const loginController = async (req, res, next) => {
   try {
