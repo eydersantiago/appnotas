@@ -1,12 +1,11 @@
-const { login, checkAuthState, logout } = require('../services/authService'); // Importa la función correcta
+const { login, checkAuthState, logout } = require('../services/authService');
 
 const loginController = async (req, res, next) => {
   try {
-    // Llama al servicio de autenticación
     const response = await login(req.body);
-    res.status(200).json(response); // Devuelve la respuesta al cliente
+    res.status(200).json(response);
   } catch (error) {
-    next(error); // Maneja errores mediante middleware de error
+    s.status(400).json({ error: error.message });
   }
 };
 
@@ -15,7 +14,7 @@ const checkAuthStateController = async (req, res, next) => {
     const response = await checkAuthState();
     res.status(200).json(response);
   } catch (error) {
-    next(error);
+    res.status(401).json({ error: "El usuario no se ha autenticado" });
   }
 };
 
@@ -24,7 +23,7 @@ const logoutController = async (req, res, next) => {
     const response = await logout();
     res.status(200).json(response);
   } catch (error) {
-    next(error);
+    res.status(400).json({ error: "Error al cerrar sesión" });
   }
 };
 

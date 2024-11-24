@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: orquestador
-          image: santiagosanchez03/orquestador-service:latest  # Reemplaza con la imagen adecuada
+          image: santiagosanchez03/orquestador-service:latest
           ports:
             - containerPort: 4005
           env:
@@ -38,7 +38,7 @@ metadata:
   labels:
     app: orquestador
 spec:
-  type: ClusterIP # Cambia a NodePort o LoadBalancer si necesitas acceso externo
+  type: ClusterIP
   ports:
     - port: 4005
       targetPort: 4005
