@@ -1,5 +1,5 @@
 const axios = require('axios');
-const AUTH_API_URL = process.env.JOURNAL_API_URL || 'http://localhost:31822/journal'; // Usa el nombre de servicio de Docker Compose
+const AUTH_API_URL = process.env.JOURNAL_API_URL || 'http://journal-service/journal';
 
 const journalSave = async (journal) => {
   const { data } = await axios.put(`${AUTH_API_URL}/saveNote`, journal);
