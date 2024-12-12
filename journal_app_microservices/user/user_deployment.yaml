@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: user
-          image: eydersantiago/user-service
+          image: eydersantiago/user-service2
           ports:
             - containerPort: 4001 
           env:
@@ -27,7 +27,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-service
+  name: user-service2
 spec:
   selector:
     app: user
