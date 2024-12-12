@@ -8,6 +8,8 @@ export const UserInfoPage = () => {
     // Selecciona el estado del store
     const { users = [], currentUser } = useSelector((state) => state.user); // Asegura que `users` tenga un valor predeterminado como array vacío
 
+    const { displayName, email, uid } = useSelector(state => state.auth);
+
     // Llama a los thunks para obtener los datos al montar el componente
     useEffect(() => {
         dispatch(startFetchingUsers());
@@ -19,19 +21,14 @@ export const UserInfoPage = () => {
             <h1>Información del Usuario</h1>
             
             <h2>Usuario Actual</h2>
-            {currentUser ? (
+            {displayName ? (
                 <div>
-                    <p><strong>Nombre:</strong> {currentUser.displayName || 'N/A'}</p>
-                    <p><strong>Email:</strong> {currentUser.email}</p>
-                    <p><strong>UID:</strong> {currentUser.uid}</p>
-                    <img 
-                        src={currentUser.photoURL || 'https://via.placeholder.com/150'} 
-                        alt="Foto del Usuario" 
-                        width="150"
-                    />
+                    <p><strong>Nombre:</strong> {displayName}</p>
+                    <p><strong>Email:</strong> {email}</p>
+                    <p><strong>UID:</strong> {uid}</p>
                 </div>
             ) : (
-                <p>Cargando información del usuario actual...</p>
+                <p>No hay usuario autenticado.</p>
             )}
 
             <h2>Lista de Todos los Usuarios</h2>
