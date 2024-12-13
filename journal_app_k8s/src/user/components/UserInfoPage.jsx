@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { startFetchingUsers, startFetchingCurrentUser } from '../../store/user';
+import '../styles/userInfo.css';
+
 
 export const UserInfoPage = () => {
     const dispatch = useDispatch();
@@ -17,19 +19,21 @@ export const UserInfoPage = () => {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className="container">
             <h1>Información del Usuario</h1>
             
             <h2>Usuario Actual</h2>
-            {displayName ? (
-                <div>
-                    <p><strong>Nombre:</strong> {displayName}</p>
-                    <p><strong>Email:</strong> {email}</p>
-                    <p><strong>UID:</strong> {uid}</p>
-                </div>
-            ) : (
-                <p>No hay usuario autenticado.</p>
-            )}
+            <div className="user-info">
+                {displayName ? (
+                    <div>
+                        <p><strong>Nombre:</strong> {displayName}</p>
+                        <p><strong>Email:</strong> {email}</p>
+                        <p><strong>UID:</strong> {uid}</p>
+                    </div>
+                ) : (
+                    <p>No hay usuario autenticado.</p>
+                )}
+            </div>
 
             <h2>Lista de Todos los Usuarios</h2>
             {users.length > 0 ? (
@@ -44,7 +48,7 @@ export const UserInfoPage = () => {
             ) : (
                 <p>No hay usuarios disponibles.</p>
             )}
-
         </div>
+
     );
 };
