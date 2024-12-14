@@ -1,10 +1,5 @@
-// routes/firebaseRoutes.js
 import express from 'express';
-import { startNewNote, 
-    startLoadingNotes, 
-    startSavingNotes, 
-    startDeletingNote 
-} from '../journalController.js';
+import { startNewNote, startLoadingNotes, startSavingNotes, startDeletingNote } from '../journalController.js';
 
 const router = express.Router();
 
