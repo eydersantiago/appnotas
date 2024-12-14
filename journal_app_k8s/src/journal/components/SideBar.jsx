@@ -1,10 +1,9 @@
-import { TurnedInNot } from "@mui/icons-material";
-import { Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import { useSelector } from "react-redux";
-import { SideBarItem } from "./";
-import SettingsIcon from "@mui/icons-material/Settings";
-import { useNavigate } from "react-router-dom";
+import { TurnedInNot } from "@mui/icons-material"
+import { Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
+import { Box } from "@mui/system"
+import { useSelector } from "react-redux"
+import { SideBarItem } from "./"
+import { use , useEffect} from "react"
 
 export const SideBar = ({ drawerWidth = 240 }) => {
 
@@ -12,9 +11,14 @@ export const SideBar = ({ drawerWidth = 240 }) => {
     const { notes } = useSelector(state => state.journal);
     const navigate = useNavigate();
 
-    const handleSettingsClick = () => {
-        navigate('/user/user-info');
-    };
+    useEffect(() => {
+        if (notes === undefined) {
+            //window.location.href = 'https://tarampampam.github.io/error-pages/hacker-terminal/500.html';
+            console.log(notes)
+            window.location.href = 'http://localhost:8080/410.html';
+        }
+    }, [notes]);
+
 
     return (
         <Box
@@ -44,11 +48,13 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 
                 <List>
                     {
-                        notes.map(note => (
-                            <SideBarItem key={note.id} {...note} />
-                        ))
+                        Array.isArray(notes) && notes.length > 0 && (
+                            notes.map(note => (
+                                <SideBarItem key={note.id} {...note} />
+                            ))
+                        )
                     }
-                </List>
+                </List>
 
             </Drawer>
         </Box>
