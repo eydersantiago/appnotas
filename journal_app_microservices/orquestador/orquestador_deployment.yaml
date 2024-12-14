@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: orquestador
-          image: santiagosanchez03/orquestador-service:latest
+          image: eydersantiago/orquestador-service7:v1
           ports:
             - containerPort: 4005
           env:

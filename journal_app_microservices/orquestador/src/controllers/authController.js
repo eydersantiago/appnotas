@@ -5,7 +5,7 @@ const loginController = async (req, res, next) => {
     const response = await login(req.body);
     res.status(200).json(response);
   } catch (error) {
-    s.status(400).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 

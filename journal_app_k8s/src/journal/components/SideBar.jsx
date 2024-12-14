@@ -3,11 +3,20 @@ import { Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, Li
 import { Box } from "@mui/system"
 import { useSelector } from "react-redux"
 import { SideBarItem } from "./"
+import { use , useEffect} from "react"
 
 export const SideBar = ({ drawerWidth = 240 }) => {
 
     const { displayName } = useSelector(state => state.auth);
     const { notes } = useSelector(state => state.journal);
+
+    useEffect(() => {
+        if (notes === undefined) {
+            //window.location.href = 'https://tarampampam.github.io/error-pages/hacker-terminal/500.html';
+            console.log(notes)
+            window.location.href = 'http://localhost:8080/410.html';
+        }
+    }, [notes]);
 
 
     return (
@@ -34,11 +43,13 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 
                 <List>
                     {
-                        notes.map(note => (
-                            <SideBarItem key={note.id} {...note} />
-                        ))
+                        Array.isArray(notes) && notes.length > 0 && (
+                            notes.map(note => (
+                                <SideBarItem key={note.id} {...note} />
+                            ))
+                        )
                     }
-                </List>
+                </List>
 
             </Drawer>
         </Box>
