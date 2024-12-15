@@ -5,7 +5,7 @@ metadata:
   labels:
     app: auth
 spec:
-  replicas: 1  
+  replicas: 1
   selector:
     matchLabels:
       app: auth
@@ -16,14 +16,23 @@ spec:
     spec:
       containers:
         - name: auth
-          image: eydersantiago/auth-service  # Aquí pones tu imagen de Docker si está en un registro público o privado
+          image: eydersantiago/auth-service
           ports:
-            - containerPort: 4000 
+            - containerPort: 4000
           env:
             - name: PORT
-              value: "4000" 
+              value: "4000"
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+      restartPolicy: Always
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -34,5 +43,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 4000 
-  type: NodePort
+      targetPort: 4000
+  type: ClusterIP

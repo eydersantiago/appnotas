@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: user
-          image: eydersantiago/user-service  # Aquí pones tu imagen de Docker si está en un registro público o privado
+          image: eydersantiago/user-service
           ports:
             - containerPort: 4001 
           env:
@@ -34,5 +34,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 4001 
-  type: NodePort 
+      targetPort: 4001
+  type: ClusterIP

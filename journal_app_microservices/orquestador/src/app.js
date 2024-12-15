@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors'); // Importar CORS
 const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
+const journalRoutes = require('./routes/journalRoutes')
 const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
@@ -16,6 +18,8 @@ app.use(express.json());
 
 // Rutas
 app.use('/auth', authRoutes);
+app.use('/user', userRoutes);
+app.use('/journal', journalRoutes);
 
 // Middleware de errores
 app.use(errorHandler);

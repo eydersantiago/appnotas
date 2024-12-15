@@ -5,7 +5,7 @@ metadata:
   labels:
     app: orquestador
 spec:
-  replicas: 3  # Número de réplicas del pod
+  replicas: 1
   selector:
     matchLabels:
       app: orquestador
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: orquestador
-          image: santiagosanchez03/orquestador-service:latest  # Reemplaza con la imagen adecuada
+          image: eydersantiago/orquestador-service7:v1
           ports:
             - containerPort: 4005
           env:
@@ -24,18 +24,12 @@ spec:
               value: "production"
             - name: PORT
               value: "4005"
-          readinessProbe: # Para verificar que el servicio esté listo
-            httpGet:
-              path: /
-              port: 4005
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          livenessProbe: # Para verificar que el contenedor sigue vivo
-            httpGet:
-              path: /
-              port: 4005
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            - name: AUTH_SERVICE_URL
+              value: "http://auth-service:4000"
+            - name: JOURNAL_SERVICE_URL
+              value: "http://journal-service:4002"
+            - name: USER_SERVICE_URL
+              value: "http://user-service:4001"
 ---
 apiVersion: v1
 kind: Service
@@ -44,7 +38,7 @@ metadata:
   labels:
     app: orquestador
 spec:
-  type: ClusterIP # Cambia a NodePort o LoadBalancer si necesitas acceso externo
+  type: ClusterIP
   ports:
     - port: 4005
       targetPort: 4005

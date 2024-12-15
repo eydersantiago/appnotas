@@ -3,7 +3,7 @@ import { loadNotes } from "../../helpers/loadNotes";
 import { addNewEmptyNote, deleteNoteById, savingNewNote, setActiveNote, setImgsToActiveNote, setNotes, setSaving, updateNotes } from "./journalSlice";
 import axios from "axios";
 
-const JOURNAL_API_URL = "http://localhost:4002/journal";
+const JOURNAL_API_URL = "http://localhost:4005/journal";
 
 export const startNewNote = () => {
     return async (dispatch, getState) => {
